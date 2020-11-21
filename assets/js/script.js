@@ -1,6 +1,6 @@
 var timerEl = document.querySelector('#time');
 var mainEl = document.getElementById('main');
-var startBtn = document.getElementById('start');
+var startBtn = document.querySelector('#startButton');
 
 var questions = [
     {
@@ -34,20 +34,17 @@ var questions = [
 
 // Timer that counts down from 75
 function quizStart() {
-    var timeLeft = 75;
+    var timeLeft = 20;
 
     // TODO: Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
     var timeInterval = setInterval(function () {
-        if (timeLeft > 5) {
+        if (timeLeft > 0) {
             timerEl.textContent = timeLeft;
             timeLeft--;
         }
-        else if (timeLeft === 1) {
-            timerEl.textContent = timeLeft + ' second remaining';
-            timeLeft--;
-        }
+        
         else {
-            timerEl.textContent = '';
+            timerEl.textContent = 'Finished!';
             clearInterval(timeInterval);
             displayMessage();
 
