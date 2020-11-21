@@ -4,6 +4,9 @@ var landingPage = document.querySelector('#title-section');
 var questionsPage = document.querySelector("#quiz-section");
 var questionEl = document.querySelector('#question-title');
 var optionsEl = document.querySelector('#options');
+var feedbackEl = document.querySelector("#feedback");
+var timeLeft = 75;
+
 
 var currentQuestionIndex = 0;
 
@@ -41,8 +44,6 @@ var questions = [
 function quizStart() {
     landingPage.setAttribute("class", "hide");
     questionsPage.setAttribute("class", "show");
-    var timeLeft = 20;
-
     
 
     // TODO: Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
@@ -80,7 +81,7 @@ var displayQuestions = function() {
 
         answerButton.textContent = i + 1 + ". " + choice;
 
-        answerButton.onclick = questionClick();
+        answerButton.onclick = questionClick;
 
         questionEl.appendChild(answerButton);
     });
@@ -88,6 +89,26 @@ var displayQuestions = function() {
 }
 
 var questionClick = function() {
+    
+    if (this.value !== questions[currentQuestionIndex].answer) {
+        timeLeft -= 10;
+        feedbackEl.textContent = "Wrong!"
+    }
+    else {
+        feedbackEl.textContent = "Correct!"
+    }
+
+    currentQuestionIndex++;
+
+    if (currentQuestionIndex === questions.length) {
+        endQuiz();
+    }
+    else {
+        displayQuestions();
+    }
+}
+
+var endQuiz = function() {
 
 }
     
