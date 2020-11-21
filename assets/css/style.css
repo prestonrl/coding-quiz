@@ -50,8 +50,17 @@ header p {
   margin: 1px 200px;
 }
 
+.show {
+  display: block;
+}
+
 .hide {
     display: none;
+}
+
+.answer-options {
+  display: block;
+  margin-top: 10px;
 }
 
 .title-section button {

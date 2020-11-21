@@ -1,6 +1,11 @@
 var timerEl = document.querySelector('#time');
-var mainEl = document.getElementById('main');
 var startBtn = document.querySelector('#startButton');
+var landingPage = document.querySelector('#title-section');
+var questionsPage = document.querySelector("#quiz-section");
+var questionEl = document.querySelector('#question-title');
+var optionsEl = document.querySelector('#options');
+
+var currentQuestionIndex = 0;
 
 var questions = [
     {
@@ -34,7 +39,11 @@ var questions = [
 
 // Timer that counts down from 75
 function quizStart() {
+    landingPage.setAttribute("class", "hide");
+    questionsPage.setAttribute("class", "show");
     var timeLeft = 20;
+
+    
 
     // TODO: Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
     var timeInterval = setInterval(function () {
@@ -50,9 +59,38 @@ function quizStart() {
 
 
     }, 1000);
+
+    displayQuestions();
 }
 
-// Displays the message one word at a time
+var displayQuestions = function() {
+    
+    var selectedQuestion = questions[currentQuestionIndex];
+
+    optionsEl.innerHTML = "";
+
+    questionEl.textContent = selectedQuestion.title;
+
+
+    selectedQuestion.choices.forEach(function (choice, i) {
+        var answerButton = document.createElement("button");
+        answerButton.setAttribute("class", "answer-options");
+
+        answerButton.setAttribute("value", choice);
+
+        answerButton.textContent = i + 1 + ". " + choice;
+
+        answerButton.onclick = questionClick();
+
+        questionEl.appendChild(answerButton);
+    });
+    
+}
+
+var questionClick = function() {
+
+}
+    
 
 
 startBtn.onclick = quizStart;
