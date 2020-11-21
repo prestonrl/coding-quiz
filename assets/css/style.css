@@ -3,18 +3,16 @@
 }
 
 :root {
-  --primary: #44e9ff;
-  --secondary: #497980;
-  --tertiary: rgb(192, 246, 253);
-  --grey: #333;
+  --primary: rgb(40, 5, 63);
+  --secondary: #852399;
+  --tertiary: rgb(252, 248, 248);
   font-size: 62.5%;
 }
 
 body {
-  background: #ededed;
+  background: var(--tertiary);
   color: var(--grey);
-  margin: 0;
-  padding: 0;
+  margin: 15px;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -22,9 +20,8 @@ body {
 }
 
 header {
-  background: var(--secondary);
-  padding: 30px 25px;
-  border-bottom: 5px solid var(--primary);
+  background: var(--tertiary);
+  padding: 20px 35px;
   display: flex;
   justify-content: space-between;
   font-size: 20px;
@@ -36,12 +33,38 @@ header p {
   font-size: 2rem;
 }
 
-p,
-li {
-  font-size: 1.6rem;
+.landing-page {
+  text-align: center;
+ 
 }
+
+.landing-page h1 {
+  font-size: 35px;
+}
+
+.landing-page p {
+  font-size: 25px;
+}
+
+.instructions {
+  margin: 1px 200px;
+}
+
 .hide {
     display: none;
+}
+
+.title-section button {
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.title-section button:hover {
+    background-color:var(--tertiary-color);  
 }
 
 @media screen and (max-width: 980px) {

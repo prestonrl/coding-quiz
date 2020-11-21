@@ -46,28 +46,13 @@ function quizStart() {
         else {
             timerEl.textContent = 'Finished!';
             clearInterval(timeInterval);
-            displayMessage();
-
         }
 
-        // YOUR CODE HERE
-        //
+
     }, 1000);
 }
 
 // Displays the message one word at a time
-function displayMessage() {
-    var wordCount = 0;
 
-    // Uses the `setInterval()` method to call a function to be executed every 300 milliseconds
-    var msgInterval = setInterval(function () {
-        if (words[wordCount] === undefined) {
-            clearInterval(msgInterval);
-        } else {
-            mainEl.textContent = words[wordCount];
-            wordCount++;
-        }
-    }, 300);
-}
 
 startBtn.onclick = quizStart;
