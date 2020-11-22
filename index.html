@@ -21,7 +21,7 @@
     
     </header>
 
-    <section id="title-section" class="show">
+    <section id="intro-section" class="show">
         <div>
             <h1>Coding Quiz Challenge</h1>
         </div>
@@ -41,9 +41,9 @@
         <div id="feedback" class="feedback"></div>
     </section>
 
-    <section id="high-score-section" class="hide">
+    <section id="show-score" class="hide">
         <div>
-            <div id="high-score">
+            <div id="current-score">
                 <h2>All done!</h2>
                 <p>Your final score is <span id="round-score">0</span></p>
                 <label for="initials-area">Enter initials:</label>
@@ -53,6 +53,19 @@
             <div id="msg"></div>
         </div>
     </section>
+
+    <section id="high-score" class="hide">
+        <div>
+            <h2>High Scores</h2>
+        </div>
+        <div>
+            <ol id="scores"></ol>
+        </div>
+        <div>
+            <a href="./index.html"><button id="play-again">Play Again</button></a>
+            <button id="reset-btn">Clear high scores</button>
+        </div>
+    </section> 
 
 
     <script src="./assets/js/script.js"></script>

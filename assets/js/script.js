@@ -1,14 +1,15 @@
 var timerEl = document.querySelector('#time');
 var startBtn = document.querySelector('#startButton');
 var submitBtn = document.querySelector('#submit-button');
-var landingPage = document.querySelector('#title-section');
+var landingPage = document.querySelector('#intro-section');
 var questionsPage = document.querySelector("#quiz-section");
 var questionEl = document.querySelector('#question-title');
 var optionsEl = document.querySelector('#options');
 var feedbackEl = document.querySelector('#feedback');
-var scoreCardEl = document.querySelector('#high-score-section')
+var scoreCardEl = document.querySelector('#show-score')
 var initialsEl = document.querySelector('initials');
 var msgDiv = document.querySelector('#msg');
+var highScoreEl = document.querySelector('#high-score');
 var timeLeft = 75;
 var timeInterval;
 var highScores = [];
@@ -17,7 +18,7 @@ var currentQuestionIndex = 0;
 
 var questions = [
     {
-        title: "Commonly Used data types DO NOT include:",
+        title: "Commonly used data types DO NOT include:",
         choices: ["stings", "alerts", "booleans", "numbers"],
         answer: "alerts"
     },
@@ -27,19 +28,19 @@ var questions = [
         answer: "parentheses"
     },
     {
-        title: "What javascipt method can we use to select an html element?",
-        choices: ["document.queryselector()", "document.getElementChild", "document.getElementById", "Both 1 and 3"],
-        answer: "Both 1 and 3"
+        title: "A very useful tool used during development and debugging for printing content to the debugger is:",
+        choices: ["JavaScript", "terminal/bash", "for loops", "console.log"],
+        answer: "console.log"
     },
     {
-        title: "What html tag is NOT included in the HEAD tag?",
-        choices: ["link", "meta", "title", "header"],
-        answer: "header"
+        title: "String values must be enclosed within ______ when being assigned to variables",
+        choices: ["commas", "curly brackets", "quotes", "parenthesis"],
+        answer: "quotes"
     },
     {
-        title: "What attribute is used in html to decorate content?",
-        choices: ["css", "class", "src", "style"],
-        answer: "style"
+        title: "Arrays in JavaScript can be used to store _______.",
+        choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
+        answer: "all of the above"
     }
 ]
 
@@ -130,11 +131,15 @@ function displayMessage(type, message) {
     msgDiv.setAttribute('class', type);
 }
 
+var showHighScores = function() {
+    scoreCardEl.setAttribute('class', 'hide');
+    highScoreEl.setAttribute('class', 'show');
+}
+
 submitBtn.addEventListener('click', function(event) {
     event.preventDefault();
 
     var userInitials = document.querySelector('#initials').value;
-    
     userInitials = userInitials.trim();
     
 
@@ -144,6 +149,11 @@ submitBtn.addEventListener('click', function(event) {
     else {
         displayMessage('success', 'Saved score')
     }
+
+    localStorage.setItem("initials", userInitials);
+    localStorage.setItem("score", timeLeft);
+
+    showHighScores();
 });
     
 
