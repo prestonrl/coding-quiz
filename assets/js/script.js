@@ -102,6 +102,7 @@ var questionClick = function() {
     
     if (this.value !== questions[currentQuestionIndex].answer) {
         timeLeft -= 10;
+        timerEl.textContent = timeLeft;
         feedbackEl.textContent = "Wrong!"
     }
     else {
@@ -119,14 +120,13 @@ var questionClick = function() {
 }
 
 var endQuiz = function() {
-    console.log(timeLeft);
+    timerEl.textContent = timeLeft;
     clearInterval(timeInterval);
     questionsPage.setAttribute("class", "hide");
     scoreCardEl.setAttribute("class", "show");
 
     var roundScoreEl = document.querySelector('#round-score');
     roundScoreEl.textContent = timeLeft;
-    console.log(roundScoreEl);
 }
 
 function displayMessage(type, message) {
