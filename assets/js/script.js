@@ -1,6 +1,7 @@
 var timerEl = document.querySelector('#time');
 var startBtn = document.querySelector('#startButton');
 var submitBtn = document.querySelector('#submit-button');
+var resetBtn = document.querySelector('#reset-btn');
 var landingPage = document.querySelector('#intro-section');
 var questionsPage = document.querySelector("#quiz-section");
 var questionEl = document.querySelector('#question-title');
@@ -136,31 +137,18 @@ var showHighScores = function() {
     scoreCardEl.setAttribute('class', 'hide');
     highScoreEl.setAttribute('class', 'show');
 
-    var savedScores = localStorage.getItem('scores');
-    if (!savedScores){
-        return false;
-    }
-
-    savedScores = JSON.parse(savedScores);
-    console.log(savedScores);
-
-    savedScores.sort(function(a, b){
+    scores.sort(function (a, b) {
         return b.score - a.score;
     });
 
-    console.log(savedScores);
-    
-
-    for (var i = 0; i <savedScores.length; i++) {
+    for (var i = 0; i <scores.length; i++) {
         var liItem = document.createElement('li');
-        liItem.textContent = savedScores[i].initials + " - " + savedScores[i].score;
-        console.log(liItem);
+        liItem.textContent = scores[i].initials + " - " + scores[i].score;
         scoresListEl.appendChild(liItem);
     }
 }
 
 submitBtn.addEventListener('click', function(event) {
-    //debugger;
     event.preventDefault();
 
     var userInitials = document.querySelector('#initials').value;
@@ -177,6 +165,17 @@ submitBtn.addEventListener('click', function(event) {
             score: timeLeft
         };
 
+        var savedScores = localStorage.getItem('scores');
+        if (!savedScores) {
+            
+            savedScores = [];
+        }
+        else {
+            savedScores = JSON.parse(savedScores);
+        }
+
+        scores = savedScores;
+
         scores.push(currentScore);
         console.log(scores);
 
@@ -185,6 +184,10 @@ submitBtn.addEventListener('click', function(event) {
         showHighScores();
     }
 });
-    
+
+resetBtn.addEventListener('click', function (event) {
+    event.preventDefault();
+    window.localStorage.removeItem("scores");    
+});
 
 startBtn.onclick = quizStart;
