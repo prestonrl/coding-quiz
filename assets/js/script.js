@@ -1,14 +1,17 @@
 var timerEl = document.querySelector('#time');
 var startBtn = document.querySelector('#startButton');
+var submitBtn = document.querySelector('#submit-button');
 var landingPage = document.querySelector('#title-section');
 var questionsPage = document.querySelector("#quiz-section");
 var questionEl = document.querySelector('#question-title');
 var optionsEl = document.querySelector('#options');
-var feedbackEl = document.querySelector("#feedback");
+var feedbackEl = document.querySelector('#feedback');
 var scoreCardEl = document.querySelector('#high-score-section')
+var initialsEl = document.querySelector('initials');
+var msgDiv = document.querySelector('#msg');
 var timeLeft = 75;
 var timeInterval;
-
+var highScores = [];
 
 var currentQuestionIndex = 0;
 
@@ -120,8 +123,28 @@ var endQuiz = function() {
     var roundScoreEl = document.querySelector('#round-score');
     roundScoreEl.textContent = timeLeft;
     console.log(roundScoreEl);
-
 }
+
+function displayMessage(type, message) {
+    msgDiv.textContent = message;
+    msgDiv.setAttribute('class', type);
+}
+
+submitBtn.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    var userInitials = document.querySelector('#initials').value;
+    
+    userInitials = userInitials.trim();
+    
+
+    if (userInitials === '') {
+        displayMessage('error','Please enter initials');
+    }
+    else {
+        displayMessage('success', 'Saved score')
+    }
+});
     
 
 

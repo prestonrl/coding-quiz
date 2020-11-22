@@ -95,6 +95,16 @@ button:hover {
   background-color:var(--secondary); 
 }
 
+.error {
+  font-size: 20px;
+  color: red;
+}
+
+.success {
+  font-size: 25px;
+  
+}
+
 .show {
   display: block;
 }
@@ -102,7 +112,6 @@ button:hover {
 .hide {
     display: none;
 }
-
 
 @media screen and (max-width: 980px) {
   form .form-group {
