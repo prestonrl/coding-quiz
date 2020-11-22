@@ -12,7 +12,7 @@ var msgDiv = document.querySelector('#msg');
 var highScoreEl = document.querySelector('#high-score');
 var timeLeft = 75;
 var timeInterval;
-var highScores = [];
+var scores = [];
 
 var currentQuestionIndex = 0;
 
@@ -150,12 +150,18 @@ submitBtn.addEventListener('click', function(event) {
         displayMessage('success', 'Saved score')
     }
 
-    localStorage.setItem("initials", userInitials);
-    localStorage.setItem("score", timeLeft);
+    var currentScore = {
+        initials: userInitials,
+        score: timeLeft
+    };
+
+    scores.push(currentScore);
+    console.log(scores);
+
+    localStorage.setItem("scores", JSON.stringify(scores));
 
     showHighScores();
 });
     
-
 
 startBtn.onclick = quizStart;
