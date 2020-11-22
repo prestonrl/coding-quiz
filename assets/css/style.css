@@ -7,6 +7,7 @@
   --secondary: #852399;
   --tertiary: rgb(252, 248, 248);
   --fourth: grey;
+  --fifth: #c18bcc;
   font-size: 62.5%;
 }
 
@@ -93,6 +94,14 @@ button {
 
 button:hover {
   background-color:var(--secondary); 
+}
+
+.list {
+  background-color: var(--fifth);
+  font-size: 20px;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .error {

@@ -10,6 +10,7 @@ var scoreCardEl = document.querySelector('#show-score')
 var initialsEl = document.querySelector('initials');
 var msgDiv = document.querySelector('#msg');
 var highScoreEl = document.querySelector('#high-score');
+var scoresListEl = document.querySelector('#scores-list');
 var timeLeft = 75;
 var timeInterval;
 var scores = [];
@@ -134,33 +135,55 @@ function displayMessage(type, message) {
 var showHighScores = function() {
     scoreCardEl.setAttribute('class', 'hide');
     highScoreEl.setAttribute('class', 'show');
+
+    var savedScores = localStorage.getItem('scores');
+    if (!savedScores){
+        return false;
+    }
+
+    savedScores = JSON.parse(savedScores);
+    console.log(savedScores);
+
+    savedScores.sort(function(a, b){
+        return b.score - a.score;
+    });
+
+    console.log(savedScores);
+    
+
+    for (var i = 0; i <savedScores.length; i++) {
+        var liItem = document.createElement('li');
+        liItem.textContent = savedScores[i].initials + " - " + savedScores[i].score;
+        console.log(liItem);
+        scoresListEl.appendChild(liItem);
+    }
 }
 
 submitBtn.addEventListener('click', function(event) {
+    //debugger;
     event.preventDefault();
 
     var userInitials = document.querySelector('#initials').value;
     userInitials = userInitials.trim();
-    
+
 
     if (userInitials === '') {
         displayMessage('error','Please enter initials');
     }
     else {
         displayMessage('success', 'Saved score')
+        var currentScore = {
+            initials: userInitials,
+            score: timeLeft
+        };
+
+        scores.push(currentScore);
+        console.log(scores);
+
+        localStorage.setItem("scores", JSON.stringify(scores));
+
+        showHighScores();
     }
-
-    var currentScore = {
-        initials: userInitials,
-        score: timeLeft
-    };
-
-    scores.push(currentScore);
-    console.log(scores);
-
-    localStorage.setItem("scores", JSON.stringify(scores));
-
-    showHighScores();
 });
     
 
