@@ -6,6 +6,7 @@
   --primary: rgb(66, 21, 95);
   --secondary: #852399;
   --tertiary: rgb(252, 248, 248);
+  --fourth: grey;
   font-size: 62.5%;
 }
 
@@ -56,6 +57,10 @@ section {
   margin: 1px 250px;
 }
 
+section label {
+  font-size: 20px;
+}
+
 .instructions {
   text-align: center;
 }
@@ -65,8 +70,16 @@ section {
   display: block;
   margin-top: 10px;
 }
+
 .start-button {
   text-align: center;
+}
+
+.feedback {
+  color: var(--fourth);
+  border-top: 2px solid var(--fourth);
+  font-size: 35px;
+  font-style: italic;
 }
 
 button {
@@ -90,9 +103,6 @@ button:hover {
     display: none;
 }
 
-.answer-options {
-  
-}
 
 @media screen and (max-width: 980px) {
   form .form-group {
