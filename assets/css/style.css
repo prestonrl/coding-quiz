@@ -128,17 +128,22 @@ button:hover {
     display: none;
 }
 
-@media screen and (max-width: 980px) {
-  form .form-group {
-    flex: 1 100%;
+@media screen and (max-width: 768px) {
+  section {
+    margin: 1px 100px;
   }
 
-  form .form-group button {
-    width: 100%;
+}
+
+@media screen and (max-width: 575px) {
+
+  section {
+    margin: 1px 20px;
   }
 
-  .task-list-wrapper {
-    flex-basis: 100%;
+  header {
+    padding: 5px;
   }
+
 
 }
