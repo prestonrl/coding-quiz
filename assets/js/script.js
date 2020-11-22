@@ -2,6 +2,7 @@ var timerEl = document.querySelector('#time');
 var startBtn = document.querySelector('#startButton');
 var submitBtn = document.querySelector('#submit-button');
 var resetBtn = document.querySelector('#reset-btn');
+var scoreBtn = document.querySelector('#score-btn');
 var landingPage = document.querySelector('#intro-section');
 var questionsPage = document.querySelector("#quiz-section");
 var questionEl = document.querySelector('#question-title');
@@ -135,7 +136,11 @@ function displayMessage(type, message) {
 
 var showHighScores = function() {
     scoreCardEl.setAttribute('class', 'hide');
+    questionsPage.setAttribute("class", "hide");
+    landingPage.setAttribute("class", "hide");
     highScoreEl.setAttribute('class', 'show');
+
+    loadScores();
 
     scores.sort(function (a, b) {
         return b.score - a.score;
@@ -165,19 +170,9 @@ submitBtn.addEventListener('click', function(event) {
             score: timeLeft
         };
 
-        var savedScores = localStorage.getItem('scores');
-        if (!savedScores) {
-            
-            savedScores = [];
-        }
-        else {
-            savedScores = JSON.parse(savedScores);
-        }
-
-        scores = savedScores;
+        loadScores();
 
         scores.push(currentScore);
-        console.log(scores);
 
         localStorage.setItem("scores", JSON.stringify(scores));
 
@@ -185,9 +180,24 @@ submitBtn.addEventListener('click', function(event) {
     }
 });
 
+var loadScores = function() {
+
+    var savedScores = localStorage.getItem('scores');
+    if (!savedScores) {
+        savedScores = [];
+    }
+    else {
+        savedScores = JSON.parse(savedScores);
+    }
+
+    scores = savedScores;
+
+}
+
 resetBtn.addEventListener('click', function (event) {
     event.preventDefault();
     window.localStorage.removeItem("scores");    
 });
 
 startBtn.onclick = quizStart;
+scoreBtn.addEventListener('click', showHighScores);

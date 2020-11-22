@@ -96,6 +96,12 @@ button:hover {
   background-color:var(--secondary); 
 }
 
+.link-score {
+  color: var(--primary);
+  background-color: var(--tertiary);
+  font-size: 20px;
+}
+
 .list {
   background-color: var(--fifth);
   font-size: 20px;
