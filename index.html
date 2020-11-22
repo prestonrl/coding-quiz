@@ -28,7 +28,7 @@
         <div class="instructions">
             <p>Try and answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your your score time by 10 seconds!</p>
         </div>
-        <div>
+        <div class="start-button">
             <button id="startButton">Start Quiz</button>
         </div>
     </section>
@@ -37,7 +37,7 @@
         <div>
             <h3 id="question-title"></h3>
         </div>
-        <div id="options"></div>
+        <div id="options" class="options"></div>
         <div id="feedback" class="feedback"></div>
     </section>
 
@@ -45,7 +45,7 @@
         <div>
             <div id="high-score">
                 <h2>All done!</h2>
-                <h3>Your final score is <span id="final-score">0</span></h3>
+                <p>Your final score is <span id="round-score">0</span></p>
                 <label for="initials-area">Enter initials:</label>
                 <input type="text" name="initials-area" maxlength="4" id="initials">
                 <button id="submit-button" type="submit">Submit</button>
@@ -53,17 +53,6 @@
         </div>
     </section>
 
-    <section id="high-scores" class="hide">
-        <div>
-            <div id="high-score">
-                <h2>All done!</h2>
-                <h3>Your final score is <span id="final-score">0</span></h3>
-                <label for="initials-area">Enter initials:</label>
-                <input type="text" name="initials-area" maxlength="4" id="initials">
-                <button id="submit-button" type="submit">Submit</button>
-            </div>
-        </div>
-    </section>
 
     <script src="./assets/js/script.js"></script>
 </body>

@@ -5,7 +5,9 @@ var questionsPage = document.querySelector("#quiz-section");
 var questionEl = document.querySelector('#question-title');
 var optionsEl = document.querySelector('#options');
 var feedbackEl = document.querySelector("#feedback");
+var scoreCardEl = document.querySelector('#high-score-section')
 var timeLeft = 75;
+var timeInterval;
 
 
 var currentQuestionIndex = 0;
@@ -47,7 +49,7 @@ function quizStart() {
     
 
     // TODO: Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
-    var timeInterval = setInterval(function () {
+    timeInterval = setInterval(function () {
         if (timeLeft > 0) {
             timerEl.textContent = timeLeft;
             timeLeft--;
@@ -56,6 +58,7 @@ function quizStart() {
         else {
             timerEl.textContent = 'Finished!';
             clearInterval(timeInterval);
+            endQuiz();
         }
 
 
@@ -75,7 +78,7 @@ var displayQuestions = function() {
 
     selectedQuestion.choices.forEach(function (choice, i) {
         var answerButton = document.createElement("button");
-        answerButton.setAttribute("class", "answer-options");
+        answerButton.setAttribute("class", "options");
 
         answerButton.setAttribute("value", choice);
 
@@ -109,6 +112,14 @@ var questionClick = function() {
 }
 
 var endQuiz = function() {
+    console.log(timeLeft);
+    clearInterval(timeInterval);
+    questionsPage.setAttribute("class", "hide");
+    scoreCardEl.setAttribute("class", "show");
+
+    var roundScoreEl = document.querySelector('#round-score');
+    roundScoreEl.textContent = timeLeft;
+    console.log(roundScoreEl);
 
 }
     
