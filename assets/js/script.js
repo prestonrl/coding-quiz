@@ -22,7 +22,7 @@ var currentQuestionIndex = 0;
 var questions = [
     {
         title: "Commonly used data types DO NOT include:",
-        choices: ["stings", "alerts", "booleans", "numbers"],
+        choices: ["strings", "alerts", "booleans", "numbers"],
         answer: "alerts"
     },
     {
